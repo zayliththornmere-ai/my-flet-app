@@ -152,4 +152,4 @@ def main(page: ft.Page):
     # --- ЗАПУСК ---
     load_question()
 
-ft.app(target=main)
+ft.app(main)
