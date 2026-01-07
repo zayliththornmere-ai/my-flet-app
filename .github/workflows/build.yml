@@ -13,11 +13,8 @@ jobs:
         with:
           distribution: 'temurin'
           java-version: '17'
-      - name: Build APK
-        run: |
-          mkdir -p assets
-          flet build apk
+      - run: flet build apk
       - uses: actions/upload-artifact@v4
         with:
-          name: App
+          name: TestApp
           path: build/apk/*.apk
