@@ -1,0 +1,23 @@
+name: Build
+on: [push, workflow_dispatch]
+jobs:
+  apk:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: pip install flet
+      - uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+      - name: Build APK
+        run: |
+          mkdir -p assets
+          flet build apk --target main.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: App
+          path: build/apk/*.apk
