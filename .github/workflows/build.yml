@@ -16,7 +16,7 @@ jobs:
       - name: Build APK
         run: |
           mkdir -p assets
-          flet build apk --target main.py
+          flet build apk
       - uses: actions/upload-artifact@v4
         with:
           name: App
